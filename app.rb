@@ -15,9 +15,11 @@ puts"\nJoueur 2 :"
 print ">> "
 pseudo2 = gets.chomp
 
-round = 0
+round = 1
 
 loop do
+
+    system "clear"
     
     icons = ["🔷", "🔴"]
 
@@ -50,8 +52,7 @@ loop do
         break
     elsif my_game.victory?
         my_game.display_board
-        winner = (my_game.current_player == my_game.player1 ? my_game.player2 : my_game.player1)
-        puts "\n#{winner.name} a gagné ! 🎉"
+        puts "\n#{my_game.current_player.name} a gagné ! 🎉"
     else
         puts "\nMatch nul !"
     end
