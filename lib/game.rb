@@ -14,13 +14,22 @@ class Game
     end
 
     def menu
-        puts "\n-------------------------------------"
-        puts "| Au tour de #{@current_player.name} (#{@current_player.icon})"
-        puts "| Choisis une case disponible parmi : #{@casechoice.select { |c| c.is_a?(Integer) }.join(', ')}"
-        puts "| Quitter en entrant 'leave'"
-        puts "-------------------------------------"
+        choices = @casechoice.select { |c| c.is_a?(Integer) }
+        puts "\n"
+        puts "-" * 65
+
+        line1 = "Au tour de #{@current_player.name} (#{@current_player.icon})"
+        line2 = "Choisis une case disponible parmi : #{choices.join(', ')}"
+        line3 = "Quitter en entrant 'leave'"
+
+        puts "| #{line1.ljust(76)}|"
+        puts "| #{line2.ljust(62)}|"
+        puts "| #{line3.ljust(62)}|"
+
+        puts "-" * 65
         print "> "
     end
+
 
     def menu_choice(action)
         return :leave if action == "leave"
@@ -38,17 +47,19 @@ class Game
 
     def display_board
         puts ""
-        puts "      |      |      "
+        puts "     |     |     "
         puts "  #{@casechoice[0]}  |  #{@casechoice[1]}  |  #{@casechoice[2]}  "
-        puts "______|______|______"
-        puts "      |      |      "
+        puts "_____|_____|_____"
+        puts "     |     |     "
         puts "  #{@casechoice[3]}  |  #{@casechoice[4]}  |  #{@casechoice[5]}  "
-        puts "______|______|______"
-        puts "      |      |      "
+        puts "_____|_____|_____"
+        puts "     |     |     "
         puts "  #{@casechoice[6]}  |  #{@casechoice[7]}  |  #{@casechoice[8]}  "
-        puts "      |      |      "
+        puts "     |     |     "
         puts ""
     end
+
+
 
     def switch_turn
         @current_player = (@current_player == @player1 ? @player2 : @player1)

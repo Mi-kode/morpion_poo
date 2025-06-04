@@ -6,7 +6,7 @@ require_relative 'lib/player'
 
 # Initialisation
 
-puts "Bienvenue dans 🔷 Tic-Tac-Toe 🔴 !"
+puts "Bienvenue dans " + "X".colorize(:blue).bold + " Tic-Tac-Toe " + "O".colorize(:red).bold + " !"
 puts"\nJoueur 1 :"
 print ">> "
 pseudo1 = gets.chomp
@@ -21,7 +21,7 @@ loop do
 
     system "clear"
     
-    icons = ["🔷", "🔴"]
+    icons = ["X".colorize(:blue).bold, "O".colorize(:red).bold]
 
     my_game = Game.new(pseudo1, pseudo2, icons)
 
@@ -55,6 +55,7 @@ loop do
         puts "\n#{my_game.current_player.name} a gagné ! 🎉"
     else
         puts "\nMatch nul !"
+        my_game.display_board
     end
 
     puts "\nSouhaitez-vous rejouer ? (y/n)"
